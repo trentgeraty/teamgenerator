@@ -1,0 +1,23 @@
+{
+  "name": "trentgeraty",
+  "version": "1.0.0",
+  "description": "teamgenerator",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trentgeraty/teamgenerator-.git"
+  },
+  "author": "trentgeraty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trentgeraty/teamgenerator-/issues"
+  },
+  "homepage": "https://github.com/trentgeraty/teamgenerator-#readme"
+}
