@@ -103,10 +103,10 @@ function promptUser(answers) {
 
 
 function generateHTML() {
-    
-    console.log(teamArray[0].getRole)
+    var teamHTML ="";
+    console.log(teamArray);
         for(i=0;i<teamArray.length;i++){
-            if (teamArray[i].getRole()=="Manger"){
+            if (teamArray[i].getRole()=="Manager"){
                 let codeblock = `<div class="card">
                 <div class="container">
                     <h4>
@@ -117,11 +117,9 @@ function generateHTML() {
                     <p><strong>Phone: </strong></p>
                 </div>
             </div>`
-                document.querySelector(".cardContainer").innerHTML=codeblock
+            teamHTML = `${teamHTML}${codeblock}`
             }
-        }
-        for(i=0;i<teamArray.length;i++){
-            if (teamArray[i].getRole()=="Engineer"){
+            else if (teamArray[i].getRole()=="Engineer"){
                 let codeblock = `<div class="card">
                 <div class="container">
                     <h4>
@@ -129,12 +127,29 @@ function generateHTML() {
                         <p>Manager</p>
                     </h4>
                     <p><strong>Email: </strong></p>
-                    <p><strong>Phone: </strong></p>
+                    <p><strong>GitHub: </strong></p>
                 </div>
             </div>`
-                document.querySelector(".cardContainer").innerHTML=codeblock
+            teamHTML = `${teamHTML}${codeblock}`
+            }
+            else if (teamArray[i].getRole()=="Intern"){
+                let codeblock = `<div class="card">
+                <div class="container">
+                    <h4>
+                        <p>${teamArray[i].name}</p>
+                        <p>Manager</p>
+                    </h4>
+                    <p><strong>Email: </strong></p>
+                    <p><strong>College: </strong></p>
+                </div>
+            </div>`
+                teamHTML = `${teamHTML}${codeblock}`
             }
         }
+        return teamHTML;
+        // for(i=0;i<teamArray.length;i++){
+          
+        // }
     };
 
 function addUser(){
@@ -145,9 +160,20 @@ function addUser(){
             type: "confirm"
         }
     ]).then(function(confirmRes){
-        confirmRes.continue ? promptUser() : generateHTML()
+        if (confirmRes.continue) {promptUser()}
+        else {
+           var companyHTML = generateHTML();
+           console.log(companyHTML);
+        }
     })
 };
 
+// fs.writeFile('index.html', generatePage(name, github), err => {
+//     if (err) throw err;
+  
+//     console.log('Portfolio complete! Check out index.html to see the output!');
+//   });
+
 promptUser();
+
 
